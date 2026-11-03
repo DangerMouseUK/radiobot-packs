@@ -14,6 +14,7 @@ New pack / update / fix / withdrawal:
 - **Stations without a working stream,** and why:
 - **Live check:** date, run with a person's permission (or "not run", and why), how many sources played, and every enabled source that failed and why:
 - **Load-balanced services:** for any address built from a service's mount, the mount and the server the official player used (or "n/a"):
+- **Same stream, other format:** for any official stream recorded in another format, the official address it comes from and the audio comparison score (or "n/a"):
 - **Anything uncertain,** or any stop-and-ask question still open:
 
 ## Checklist
