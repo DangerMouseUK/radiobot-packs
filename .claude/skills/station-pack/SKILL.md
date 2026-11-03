@@ -28,7 +28,7 @@ This playbook exists twice with the same content: `playbook/PLAYBOOK.md` for peo
 
 1. **Public, free streams only.** Never a stream that needs a log-in, an app, a particular country, DRM, or a signed, tokenised or expiring address.
 2. **No disguises.** The bot identifies itself to stream hosts as FFmpeg (`Lavf/<version>`). It never pretends to be a browser and sends no `Referer` or cookies. If a host refuses it (HTTP 401, 403 or 451), that is the answer. Don't look for a way round it.
-3. **Every source has provenance.** Where the address was found, when, and why it belongs to that station. Only addresses that the broadcaster's own site or player gives, with one exception: for a stream on a load-balanced streaming service, that service's stable address for the exact mount the official player plays (see [Load-balanced streaming services](#load-balanced-streaming-services)). Never addresses found by a crawler or guessed by editing a URL.
+3. **Every source has provenance.** Where the address was found, when, and why it belongs to that station. Only addresses that the broadcaster's own site or player gives, with two exceptions: for a stream on a load-balanced streaming service, that service's stable address for the exact mount the official player plays (see [Load-balanced streaming services](#load-balanced-streaming-services)); and an official stream at the same address in another format, proven by an audio comparison (see [The same stream in another format](#the-same-stream-in-another-format)). Never addresses found by a crawler or guessed by editing a URL.
 4. **IDs are permanent.** The pack id, every station slug and every source id. Never change one, never reuse one, never delete one. Installed bots' favourites and queues point at them.
 5. **Nothing but data.** No logos, artwork, images, audio or personal data.
 6. **Names stay in their pack.** A broadcaster's name and its stations' names appear only inside `packs/<pack-id>/`. Everything else in this repository stays generic (use examples such as `mypack:my-station`).
@@ -105,7 +105,7 @@ Answer every question. One "no" means the stream, or the whole company, can't go
 7. **Signed links that redirect.** Some players hand out a signed link that redirects to a plain address. Never record the signed link. The plain address may be used only if it plays on its own, with nothing added, and stays the same over time. If in doubt, stop and ask.
 8. **Numbered servers that change.** If the address names one of many servers that a streaming service picks afresh for each listener (such as `12345.live.example-cdn.com`), don't record that server: see [Load-balanced streaming services](#load-balanced-streaming-services).
 9. **Record every quality the player offers** as a separate source: a direct stream (Icecast or SHOUTcast, MP3, AAC or Opus) and HLS. The bot measures them and picks the best. Direct streams come first; HLS is a last resort. A streaming service may offer other formats that the player never uses; leave those out.
-10. **Never invent an address.** Don't change `128` to `320` in a URL, or try mount names. Only the site and its player count. The one address you may write yourself is a load-balanced service's stable address for the exact mount the player plays, as described below.
+10. **Never invent an address.** Don't change `128` to `320` in a URL, or try mount names. Only the site and its player count. The only addresses you may write yourself are a load-balanced service's stable address for the exact mount the player plays, and an official stream in another format at the same address, both described below.
 11. **Video is not audio.** Visual-radio or TV streams in the player's data are not sources, even when they carry the same programme.
 12. **Record for every address:**
    - `found_at`: the page or player where you found it;
@@ -298,6 +298,17 @@ Known services:
 - **Triton Digital** (servers `<number>.live.streamtheworld.com`). The player looks the mount up at `https://playerservices.streamtheworld.com/api/livestream?mount=<MOUNT>&transports=http,hls&version=1.10`, which must show `<status-code>200</status-code>` and `<authentication>0</authentication>`. Record `https://playerservices.streamtheworld.com/api/livestream-redirect/<MOUNT>.aac` for an AAC mount (`.mp3` for an MP3 one), with `<MOUNT>` as the player writes it in capitals (for example `MYSTATION_AAC`). The address redirects to a working server for each listener. Record the HLS form only if the player itself uses HLS.
 - **A stable address that redirects to a server with a per-connection token** (such as `rj-tok`). Record the stable address the player was given, never the server it redirects to or its token.
 
+### The same stream in another format
+
+Some hosts serve one stream in more than one format at nearly the same address: an HLS playlist at `https://stream.example-cdn.com/MOUNT/hls.m3u8`, say, and the same audio as a direct stream at `https://stream.example-cdn.com/MOUNT`. When the official player gives only one of them, the other may still be worth recording, typically as a direct stream for a station that has only HLS, or a second direct stream as a fallback. It is the same audio the broadcaster already publishes, delivered another way, so it may be recorded when **all** of these hold:
+
+1. **Same host, same stream name.** Only the format part of the official address changes (such as dropping `/hls.m3u8`). Never try other stream names, numbers or bitrates: `128` to `320` is a guess at a different stream, not the same one in another format.
+2. **It plays for the bot**, with nothing added: no token, log-in, `Referer` or other header.
+3. **An audio comparison proves it.** With a person's permission, run the live check with `--compare` on the station, and the comparison between the new address and the official one must support identity. Record the score.
+4. **It adds something** the station doesn't already have: a direct stream where there was only HLS, a fallback direct stream, or a better codec at the same bitrate. A duplicate of a direct stream you already have adds nothing.
+
+Its `provenance` is `curated`. Its `provenance_detail` names the official address it comes from, the date, and the comparison result, and `SOURCE_PROVENANCE.md` says the same. If the official address stops working or changes, check this one again too: nothing official points at it.
+
 ## 12. Pull request checklist
 
 Copy this into the pull request (the template does it for you) and answer every line:
@@ -307,6 +318,7 @@ Copy this into the pull request (the template does it for you) and answer every 
 - [ ] The date of the live check, run with a person's permission (or "not run"), how many sources played, and every enabled source that failed and why.
 - [ ] Anything uncertain, and any stop-and-ask question still open.
 - [ ] Any address built for a load-balanced service names its mount and the server the player used, and is `curated`.
+- [ ] Any official stream recorded in another format names the official address it comes from and its audio comparison result, and is `curated`.
 - [ ] `validate-catalogue --strict` passed for every changed pack.
 - [ ] `node scripts/ci-check.mjs --base origin/main` passed.
 - [ ] No pack id, slug or source id was removed, changed or reused.
