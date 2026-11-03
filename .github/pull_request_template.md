@@ -12,7 +12,8 @@ New pack / update / fix / withdrawal:
 
 - **Station list:** where it came from (official page), and the date it was taken:
 - **Stations without a working stream,** and why:
-- **Live check:** date, run with a person's permission (or "not run", and why):
+- **Live check:** date, run with a person's permission (or "not run", and why), how many sources played, and every enabled source that failed and why:
+- **Load-balanced services:** for any address built from a service's mount, the mount and the server the official player used (or "n/a"):
 - **Anything uncertain,** or any stop-and-ask question still open:
 
 ## Checklist
@@ -21,9 +22,9 @@ New pack / update / fix / withdrawal:
 - [ ] `validate-catalogue --strict` passed for every changed pack.
 - [ ] `node scripts/ci-check.mjs --base origin/main` passed.
 - [ ] No pack id, station slug or source id was removed, changed or reused (renames use aliases, closed stations are retired, broken sources are disabled with a reason).
-- [ ] `version` was bumped in every changed pack.
+- [ ] `version` was bumped in every changed pack (`generate --base origin/main`), and a new pack keeps the date it was started with.
 - [ ] A new pack's id was added to `pack-ids.json`.
 - [ ] Every source has provenance, and `SOURCE_PROVENANCE.md` records where and when every address was found.
 - [ ] Only public, free streams: no log-in, app-only, region-locked, DRM, signed, tokenised or expiring addresses.
-- [ ] No logos, artwork, audio, personal data, tokens or tracking parameters.
+- [ ] No logos, artwork, audio, personal data, tokens or tracking parameters (including consent strings and session ids).
 - [ ] Broadcaster and station names appear only inside the pack's own folder.
