@@ -1,0 +1,52 @@
+name: Check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  packs:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      # The bot's own validator and authoring tools. RADIO_BOT_REF (a repository variable) can point
+      # at a branch or tag of the bot while a new pack format is being rolled out.
+      - uses: actions/checkout@v7
+        with:
+          repository: DangerMouseUK/radiobot
+          ref: ${{ vars.RADIO_BOT_REF || 'main' }}
+          path: .radiobot
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: Install the bot's dependencies
+        working-directory: .radiobot
+        env:
+          COREPACK_ENABLE_DOWNLOAD_PROMPT: '0'
+        run: |
+          corepack enable
+          pnpm install --frozen-lockfile --prod --ignore-scripts
+      # Validates every pack (strict), checks pack-ids.json and withdrawn.json, runs diff-check on
+      # every pack changed since the base commit, and test-builds the library.
+      - name: Check the library
+        env:
+          BASE: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+        run: node scripts/ci-check.mjs --bot .radiobot --base "$BASE"
+
+  secrets:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      # Pinned by commit: third-party actions are never used by a moving tag.
+      - uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e # v3.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

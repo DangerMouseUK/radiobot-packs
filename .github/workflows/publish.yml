@@ -1,0 +1,82 @@
+name: Publish
+
+# Builds the library (index.json plus one <id>.json bundle per pack) and publishes it as the
+# assets of a new GitHub release, marked latest. Installed bots read
+# https://github.com/DangerMouseUK/radiobot-packs/releases/latest/download/index.json
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packs/**'
+      - 'collections/**'
+      - 'withdrawn.json'
+  workflow_dispatch:
+
+# Two publishes never run at once, and a queued one is never cancelled half-way.
+concurrency:
+  group: publish-library
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/checkout@v7
+        with:
+          repository: DangerMouseUK/radiobot
+          ref: ${{ vars.RADIO_BOT_REF || 'main' }}
+          path: .radiobot
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: Install the bot's dependencies
+        working-directory: .radiobot
+        env:
+          COREPACK_ENABLE_DOWNLOAD_PROMPT: '0'
+        run: |
+          corepack enable
+          pnpm install --frozen-lockfile --prod --ignore-scripts
+      # The same checks as a pull request, so a broken library is never published.
+      - name: Check the library
+        run: node scripts/ci-check.mjs --bot .radiobot
+      - name: Choose the release tag
+        id: tag
+        run: |
+          date="$(date -u +%Y.%m.%d)"
+          echo "date=$date" >> "$GITHUB_OUTPUT"
+          echo "tag=library-$date-${{ github.run_number }}" >> "$GITHUB_OUTPUT"
+      # Bundle addresses name the tag, so an index always points at its own release's files.
+      - name: Build the library
+        run: >-
+          node .radiobot/scripts/pack-author.ts build-library packs dist
+          --base-url "https://github.com/${{ github.repository }}/releases/download/${{ steps.tag.outputs.tag }}/"
+          --collections collections
+          --withdrawn withdrawn.json
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.tag.outputs.tag }}
+          DATE: ${{ steps.tag.outputs.date }}
+        run: |
+          summary="$(node -e '
+            const i = JSON.parse(require("node:fs").readFileSync("dist/index.json", "utf8"));
+            const a = i.packs.filter((p) => p.status === "available");
+            const w = i.packs.length - a.length;
+            const s = a.reduce((n, p) => n + p.stations, 0);
+            console.log(`${a.length} packs, ${s} stations` + (w ? `, ${w} withdrawn` : "") + ".");
+          ')"
+          notes="Station pack library built from ${GITHUB_SHA}: ${summary}
+
+          Installed bots pick this release up from releases/latest. Radio Bot and this library are unofficial and not affiliated with or endorsed by any broadcaster."
+          gh release create "$TAG" dist/* \
+            --target "$GITHUB_SHA" \
+            --latest \
+            --title "Pack library $DATE (${{ github.run_number }})" \
+            --notes "$notes"

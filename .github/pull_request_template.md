@@ -1,0 +1,29 @@
+<!--
+Follow playbook/PLAYBOOK.md. Answer every line; write "n/a" where a line doesn't apply.
+Keep broadcaster and station names inside the pack's own folder: refer to the pack by its id here.
+-->
+
+## What this changes
+
+Pack(s):
+New pack / update / fix / withdrawal:
+
+## Evidence
+
+- **Station list:** where it came from (official page), and the date it was taken:
+- **Stations without a working stream,** and why:
+- **Live check:** date, run with a person's permission (or "not run", and why):
+- **Anything uncertain,** or any stop-and-ask question still open:
+
+## Checklist
+
+- [ ] I followed the playbook, step by step.
+- [ ] `validate-catalogue --strict` passed for every changed pack.
+- [ ] `node scripts/ci-check.mjs --base origin/main` passed.
+- [ ] No pack id, station slug or source id was removed, changed or reused (renames use aliases, closed stations are retired, broken sources are disabled with a reason).
+- [ ] `version` was bumped in every changed pack.
+- [ ] A new pack's id was added to `pack-ids.json`.
+- [ ] Every source has provenance, and `SOURCE_PROVENANCE.md` records where and when every address was found.
+- [ ] Only public, free streams: no log-in, app-only, region-locked, DRM, signed, tokenised or expiring addresses.
+- [ ] No logos, artwork, audio, personal data, tokens or tracking parameters.
+- [ ] Broadcaster and station names appear only inside the pack's own folder.
