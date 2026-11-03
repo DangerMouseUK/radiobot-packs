@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "id": "slam",
+  "name": "SLAM!",
+  "description": "The SLAM! stations listed in the slam.nl web player: the main SLAM! station plus its nine digital theme stations.",
+  "version": "2026.11.03",
+  "owner": {
+    "name": "Mediahuis Radio",
+    "kind": "group",
+    "brand": "SLAM!"
+  },
+  "countries": ["NL"],
+  "regions": [],
+  "languages": ["nl"],
+  "minBotVersion": null,
+  "disclaimer": null,
+  "order": 100,
+  "enabledByDefault": true,
+  "brandLabels": ["SLAM!", "SLAM", "SLAM!FM"],
+  "categories": [
+    {
+      "id": "flagship",
+      "name": "Flagship"
+    },
+    {
+      "id": "hits",
+      "name": "Hits"
+    },
+    {
+      "id": "decades",
+      "name": "Decades"
+    },
+    {
+      "id": "dance-mixes",
+      "name": "Dance & mixes"
+    },
+    {
+      "id": "urban",
+      "name": "Hip hop & R&B"
+    }
+  ],
+  "sync": null,
+  "snapshotDate": "2026-11-03"
+}
