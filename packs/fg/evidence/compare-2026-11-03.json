@@ -1,0 +1,182 @@
+{
+  "generatedAt": "2026-11-03T18:45:35.840Z",
+  "probes": [
+    {
+      "stationId": "fg:fg-dj-radio",
+      "sourceId": "fg-dj-radio-mp3-wknqhm4yuchvv",
+      "outcome": {
+        "success": true,
+        "failureCode": null,
+        "failureDetail": null,
+        "startedAt": "2026-11-03T18:43:40.150Z",
+        "durationMs": 7392,
+        "startupMs": 38,
+        "transport": "http-continuous",
+        "effectiveHost": "n01-eu2.rcs.revma.com",
+        "container": "mp3",
+        "codec": "mp3",
+        "profile": null,
+        "sampleRateHz": 44100,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "advertisedBitrateKbps": null,
+        "codecBitrateKbps": 128,
+        "measuredBitrateKbps": 128,
+        "networkKbps": 220,
+        "bitrateEvidence": "measured",
+        "sampleSeconds": 12,
+        "decodedSeconds": 11.9,
+        "decodeErrors": 0,
+        "icyName": "-",
+        "icyTitle": "FG MIX LIVE - ÉDOUARD !",
+        "headersSummary": {
+          "content-type": "audio/mpeg",
+          "icy-name": "-",
+          "icy-metaint": "16000"
+        },
+        "manifestSummary": {}
+      }
+    },
+    {
+      "stationId": "fg:fg-dj-radio",
+      "sourceId": "fg-dj-radio-hls-wknqhm4yuchvv",
+      "outcome": {
+        "success": false,
+        "failureCode": "NOT_FOUND",
+        "failureDetail": "Nothing is at that address any more (HTTP 404). It may have moved or been removed.",
+        "startedAt": "2026-11-03T18:43:47.543Z",
+        "durationMs": 10174,
+        "startupMs": null,
+        "transport": "unknown",
+        "effectiveHost": null,
+        "container": null,
+        "codec": null,
+        "profile": null,
+        "sampleRateHz": null,
+        "channels": null,
+        "channelLayout": null,
+        "advertisedBitrateKbps": null,
+        "codecBitrateKbps": null,
+        "measuredBitrateKbps": null,
+        "networkKbps": null,
+        "bitrateEvidence": "unknown",
+        "sampleSeconds": null,
+        "decodedSeconds": null,
+        "decodeErrors": 0,
+        "icyName": null,
+        "icyTitle": null,
+        "headersSummary": {},
+        "manifestSummary": {}
+      }
+    },
+    {
+      "stationId": "fg:fg-dj-radio",
+      "sourceId": "fg-dj-radio-hls-gk9y379uquhvv",
+      "outcome": {
+        "success": true,
+        "failureCode": null,
+        "failureDetail": null,
+        "startedAt": "2026-11-03T18:43:57.717Z",
+        "durationMs": 9652,
+        "startupMs": 138,
+        "transport": "hls",
+        "effectiveHost": "n08-eu2.rcs.revma.com",
+        "container": "aac",
+        "codec": "aac",
+        "profile": "LC",
+        "sampleRateHz": 44100,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "advertisedBitrateKbps": null,
+        "codecBitrateKbps": 125.4,
+        "measuredBitrateKbps": 128,
+        "networkKbps": 560,
+        "bitrateEvidence": "measured",
+        "sampleSeconds": 30,
+        "decodedSeconds": 30,
+        "decodeErrors": 0,
+        "icyName": null,
+        "icyTitle": null,
+        "headersSummary": {
+          "content-type": "application/vnd.apple.mpegurl; charset=UTF-8"
+        },
+        "manifestSummary": {
+          "playlistHost": "n08-eu2.rcs.revma.com",
+          "chosen": {
+            "bitrateKbps": null,
+            "reason": "audio-only variant (declared bandwidth)",
+            "codecs": [
+              "mp4a.40.2"
+            ]
+          },
+          "alternatives": [],
+          "targetDuration": 11
+        }
+      }
+    },
+    {
+      "stationId": "fg:fg-dj-radio",
+      "sourceId": "fg-dj-radio-aac-gk9y379uquhvv",
+      "outcome": {
+        "success": true,
+        "failureCode": null,
+        "failureDetail": null,
+        "startedAt": "2026-11-03T18:44:07.369Z",
+        "durationMs": 7373,
+        "startupMs": 0,
+        "transport": "http-continuous",
+        "effectiveHost": "n01-eu2.rcs.revma.com",
+        "container": "aac",
+        "codec": "aac",
+        "profile": "LC",
+        "sampleRateHz": 44100,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "advertisedBitrateKbps": null,
+        "codecBitrateKbps": 125.8,
+        "measuredBitrateKbps": 128,
+        "networkKbps": 221,
+        "bitrateEvidence": "measured",
+        "sampleSeconds": 12.1,
+        "decodedSeconds": 12.1,
+        "decodeErrors": 0,
+        "icyName": "-",
+        "icyTitle": "FG MIX LIVE - ÉDOUARD !",
+        "headersSummary": {
+          "content-type": "audio/aac",
+          "icy-name": "-",
+          "icy-metaint": "16000"
+        },
+        "manifestSummary": {}
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "stationId": "fg:fg-dj-radio",
+      "a": "fg-dj-radio-mp3-wknqhm4yuchvv",
+      "b": "fg-dj-radio-hls-gk9y379uquhvv",
+      "result": {
+        "score": 0.508,
+        "lagSeconds": 18.55,
+        "prominence": 14.4,
+        "uniqueness": 1.41,
+        "overlapSeconds": 29.47,
+        "verdict": "supports"
+      }
+    },
+    {
+      "stationId": "fg:fg-dj-radio",
+      "a": "fg-dj-radio-mp3-wknqhm4yuchvv",
+      "b": "fg-dj-radio-aac-gk9y379uquhvv",
+      "result": {
+        "score": 0.809,
+        "lagSeconds": 7.77,
+        "prominence": 14.8,
+        "uniqueness": 1.35,
+        "overlapSeconds": 35.24,
+        "verdict": "supports"
+      }
+    }
+  ]
+}

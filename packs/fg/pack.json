@@ -3,8 +3,12 @@
   "id": "fg",
   "name": "Radio FG",
   "description": "The webradios listed on radiofg.com: the flagship FG DJ RADIO plus the FG CHIC, FG DANCE, MAXXIMUM and specialist streams.",
-  "version": "2026.11.03",
-  "owner": { "name": "Radio FG", "kind": "broadcaster", "brand": null },
+  "version": "2026.11.03.2",
+  "owner": {
+    "name": "Radio FG",
+    "kind": "broadcaster",
+    "brand": null
+  },
   "countries": ["FR"],
   "languages": ["fr"],
   "disclaimer": null,
@@ -39,7 +43,7 @@
   ],
   "sync": {
     "adapter": "webradio-apidata",
-    "url": "https://www.radiofg.com/webradios"
+    "url": "https://www.radiofg.com/les-radios-fg"
   },
-  "snapshotDate": "2026-10-31"
+  "snapshotDate": "2026-11-03"
 }
