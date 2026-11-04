@@ -92,7 +92,9 @@ Answer every question. One "no" means the stream, or the whole company, can't go
 6. **Clean the address.** Remove tracking parameters only if the stream still plays without them. Typical ones are player or SDK names and versions, consent strings (`gdpr`, `gdpr_consent`), session or listener ids (such as `sbmid`, `uuid`, `listenerid`), and distribution or campaign tags. Never record a consent string or a session id. If the stream needs a parameter that looks like a token or a signature, it is a signed address: stop.
 7. **Signed links that redirect.** Some players hand out a signed link that redirects to a plain address. Never record the signed link. The plain address may be used only if it plays on its own, with nothing added, and stays the same over time. If in doubt, stop and ask.
 8. **Numbered servers that change.** If the address names one of many servers that a streaming service picks afresh for each listener (such as `12345.live.example-cdn.com`), don't record that server: see [Load-balanced streaming services](#load-balanced-streaming-services).
-9. **Record every quality the player offers** as a separate source: a direct stream (Icecast or SHOUTcast, MP3, AAC or Opus) and HLS. The bot measures them and picks the best. Direct streams come first; HLS is a last resort. A streaming service may offer other formats that the player never uses; leave those out.
+9. **Record every stream the official site or player links to the station** as a separate source, in every format and quality it gives, HLS included. A station's data often holds several links (such as high quality, standard quality and HLS) even when the player plays only one of them by default: that counts too. These are the station's fallbacks: the bot plays the best and moves to the next if it fails (see [Keep working sources](#keep-working-sources)).
+   - **HLS is always the last resort.** The bot ranks every direct stream (Icecast or SHOUTcast, MP3, AAC or Opus) above any HLS, even a lower-quality one. Give direct streams priority `10` and HLS `20`.
+   - **Leave out only formats that nothing official links to the station**, such as other formats a streaming service offers that the site and its player never mention.
 10. **Never invent an address.** Don't change `128` to `320` in a URL, or try mount names. Only the site and its player count. The only addresses you may write yourself are a load-balanced service's stable address for the exact mount the player plays, and an official stream in another format at the same address, both described below.
 11. **Video is not audio.** Visual-radio or TV streams in the player's data are not sources, even when they carry the same programme.
 12. **Record for every address:**
@@ -151,7 +153,7 @@ Answer every question. One "no" means the stream, or the whole company, can't go
 | `found_at`         | The page or player where you found the address. Always fill it in for a new address.                  |
 | `found_on`         | The date you found it, `YYYY-MM-DD`. Always fill it in for a new address.                             |
 | `provenance_detail`| What linked the address to the station, and when. If you leave it blank, `generate` writes "Linked from `found_at` on `found_on`." |
-| `enabled`          | `true`, or `false` for a source that doesn't work.                                                    |
+| `enabled`          | `true`, or `false` only for a source that is refused, plays another station, is unsafe or has failed for 7 days (see [Keep working sources](#keep-working-sources)). |
 | `disabled_reason`  | Why it is disabled, when `enabled` is `false`.                                                         |
 
 5. `intake.csv` is a working file. Git ignores it; never commit it. The JSON files and `SOURCE_PROVENANCE.md` are the record. `export` doesn't write `found_at` and `found_on` back into the sheet; they live in the sources table of `SOURCE_PROVENANCE.md`, which `generate` keeps.
@@ -172,7 +174,9 @@ Answer every question. One "no" means the stream, or the whole company, can't go
    - how the stream addresses were found, and when;
    - what was checked, and what was not;
    - every disabled source and why;
-   - anything unusual (stations sharing a stream, single-source stations, HLS-only stations).
+   - every source that failed a check but stays enabled, and when it will be checked again;
+   - the stations with only one enabled source, and whether the official site offers any other stream for them;
+   - anything unusual (stations sharing a stream, HLS-only stations).
 3. Validate strictly:
 
    ```sh
@@ -194,20 +198,34 @@ Answer every question. One "no" means the stream, or the whole company, can't go
    For a very large pack, the person may prefer a sample: name stations instead of `--pack-id`, for example `--probe mypack:my-station mypack:other-station`. Add `--compare` to compare the audio of a station's sources (about 40 s each).
 
    It checks FFmpeg before anything else and prints the FFprobe it uses (`Using ffprobe version …`). If it says none could be run, nothing was contacted and no report was written: fix the set-up (step 1.6) and run it. That doesn't count as repeating a run.
-3. Don't repeat a run that failed just to get a better result. Find out why.
-4. Read the report (the script prints one line per source):
+3. Don't repeat a run that failed just to get a better result. Find out why. Checking a failed source again on another day, to see whether the failure lasts, is not repeating a run: it is how you tell a passing fault from a dead source.
+4. Read the report (the script prints one line per source), and follow [Keep working sources](#keep-working-sources):
    - `ACCESS_DENIED` (HTTP 401, 403 or 451): the host refuses the bot. Disable the source with the reason. Don't work round it.
-   - Not found, timeouts, not audio: disable the source with the reason.
    - A source that plays a different station: disable it and say so. The `icy-name` each stream announces is a quick check that every mount is mapped to the right station.
-5. Write a short summary of the results in `SOURCE_PROVENANCE.md`: the date, how many sources played, and which failed and why.
+   - A timeout, a server error (HTTP 5xx), a network error, not audio, or a "not found" or other HTTP 4xx: one failure never switches a source off. Leave it enabled, note the failure, and check it again on another day. Disable it only when it has failed for 7 days: two failed checks at least 7 days apart.
+5. Write a short summary of the results in `SOURCE_PROVENANCE.md`: the date, how many sources played, which failed and why, and which of those stay enabled until they are checked again.
 6. Keep the date in the report's file name. The library shows the newest one as the date the pack was last checked, and strict validation reads only the newest one.
 7. The report holds no audio. Never add audio to `evidence/`.
 8. Disabling sources changes the pack: run `export`, set `enabled` to `false` with a reason, and `generate --base origin/main` again (step 7).
-9. Run the strict validation again. It must pass now: the newest report must check the pack's own sources, at least one must have played, and FFmpeg must have run. It also prints a warning for every enabled source that failed the newest check; disable each one, or find out why and say so in `SOURCE_PROVENANCE.md`. Then run the library's own checks, as CI will:
+9. Run the strict validation again. It must pass now: the newest report must check the pack's own sources, at least one must have played, and FFmpeg must have run. It also prints a warning for every enabled source that failed the newest check. Disable one only if [Keep working sources](#keep-working-sources) allows it; for any other, say in `SOURCE_PROVENANCE.md` when it failed and that it will be checked again. Then run the library's own checks, as CI will:
 
    ```sh
    node scripts/ci-check.mjs --bot ../radiobot --base origin/main
    ```
+
+### Keep working sources
+
+A station's extra sources are its fallbacks. The bot ranks them itself: direct streams before HLS, then by measured quality. It plays the best, moves to the next when that fails, and moves back once the best works again. It also backs off from a failing source by itself, and pauses one that has failed for 7 days. A source the pack ships switched off is never used or checked by the bot, so switch a source off only when it really must not be used.
+
+1. **Never switch off a source that plays the right station because another source is as good or better.** Not for the same bitrate, a lower bitrate, or for being HLS when the station has a direct stream. The bot does the ranking.
+2. `enabled: false` is only for a source that:
+   - is refused: HTTP 401, 403 or 451 (`ACCESS_DENIED`);
+   - plays another station;
+   - is unsafe: signed, tokenised, encrypted or blocked by policy;
+   - has failed for 7 days: two failed checks at least 7 days apart. That matches the bot, which pauses a source after 7 days of failure;
+   - is an old address that the official site no longer links to the station (see step 9.2).
+3. **One failure is not one of these.** A timeout, a server error or one "not found" never switches a source off: note it in `SOURCE_PROVENANCE.md` and check it again on another day.
+4. Every disabled source keeps its `disabledReason`. When a later check shows it plays the right station again, enable it again.
 
 ## 9. Update an existing pack
 
@@ -223,8 +241,8 @@ Answer every question. One "no" means the stream, or the whole company, can't go
    - **New station:** add its rows with a blank `slug`.
    - **Station closed:** set `catalogue_status` to `retired`. Never delete the row.
    - **Station gone from the official list, but you aren't sure it closed:** `missing_from_official`.
-   - **Broken address:** set `enabled` to `false` and give a `disabled_reason`. Never delete the row.
-   - **New address for a station:** add a new row with its own `found_at`, `found_on` and provenance. Don't overwrite the old row's `url`: that makes a new source and leaves the old one as it was. Disable the old row instead, with a reason.
+   - **Broken address:** only when [Keep working sources](#keep-working-sources) allows it (refused, another station, unsafe, or failed for 7 days), set `enabled` to `false` and give a `disabled_reason`. Never delete the row.
+   - **New address for a station:** add a new row with its own `found_at`, `found_on` and provenance. Don't overwrite the old row's `url`: that makes a new source and leaves the old one as it was. Keep the old row enabled while it still plays and the site still links it. Once the site no longer links it, or it has failed for 7 days, disable it with a reason.
    - **A source on the wrong station:** `generate` refuses to move it. Stop and ask; a maintainer moves it by editing `sources.json`.
    - Deleting a row from the sheet deletes nothing: `generate` keeps the station or source and warns you.
    - Never reuse a slug or a source id, and never change one.
@@ -293,7 +311,7 @@ Some hosts serve one stream in more than one format at nearly the same address: 
 1. **Same host, same stream name.** Only the format part of the official address changes (such as dropping `/hls.m3u8`). Never try other stream names, numbers or bitrates: `128` to `320` is a guess at a different stream, not the same one in another format.
 2. **It plays for the bot**, with nothing added: no token, log-in, `Referer` or other header.
 3. **An audio comparison proves it.** With a person's permission, run the live check with `--compare` on the station, and the comparison between the new address and the official one must support identity. Record the score.
-4. **It adds something** the station doesn't already have: a direct stream where there was only HLS, a fallback direct stream, or a better codec at the same bitrate. A duplicate of a direct stream you already have adds nothing.
+4. **It adds something** the station doesn't already have: a direct stream where there was only HLS, a fallback direct stream, or a better codec at the same bitrate. A duplicate of a direct stream you already have adds nothing. This test is only for an address you write yourself under this section. It never applies to an address the official site or player gives: that is always recorded and kept enabled (see [Keep working sources](#keep-working-sources)), whatever it adds.
 
 Its `provenance` is `curated`. Its `provenance_detail` names the official address it comes from, the date, and the comparison result, and `SOURCE_PROVENANCE.md` says the same. If the official address stops working or changes, check this one again too: nothing official points at it.
 
@@ -303,7 +321,9 @@ Copy this into the pull request (the template does it for you) and answer every 
 
 - [ ] Where the station list came from, and the date it was taken.
 - [ ] Stations without a working stream, and why.
+- [ ] Stations with only one enabled source, and whether the official site offers any other stream for them (for information).
 - [ ] The date of the live check, run with a person's permission (or "not run"), how many sources played, and every enabled source that failed and why.
+- [ ] Every stream the official site or player links to a station is recorded, and no source that plays the right station was switched off because another is as good or better.
 - [ ] Anything uncertain, and any stop-and-ask question still open.
 - [ ] Any address built for a load-balanced service names its mount and the server the player used, and is `curated`.
 - [ ] Any official stream recorded in another format names the official address it comes from and its audio comparison result, and is `curated`.
@@ -331,6 +351,6 @@ A reviewer goes through the same steps in reverse:
 1. Run `node scripts/ci-check.mjs --base origin/main` on the branch.
 2. Open the official station list and compare it with `stations.json`: names, count and order.
 3. For a sample of stations, open the official player and confirm that the addresses in `sources.json` are the ones it uses (for a load-balanced service, that the mount is the one it plays). Starting a player contacts stream servers: an agent reviewing asks first (hard rule 7).
-4. Read the newest report in `evidence/`: its date, which sources played, and that every enabled source that failed is explained.
+4. Read the newest report in `evidence/`: its date, which sources played, and that every enabled source that failed is explained. Check that every disabled source has a reason [Keep working sources](#keep-working-sources) allows.
 5. Read `SOURCE_PROVENANCE.md`: every source id appears in the table, and the narrative says what was and wasn't checked.
 6. Check the pull request answers every checklist line, and that no stop-and-ask question is still open.

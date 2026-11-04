@@ -1,0 +1,771 @@
+{
+  "generatedAt": "2026-11-04T16:45:13.635Z",
+  "probes": [
+    {
+      "stationId": "fg:fg-dance",
+      "sourceId": "fg-dance-mp3-zfad8vm4srhvv",
+      "outcome": {
+        "success": true,
+        "failureCode": null,
+        "failureDetail": null,
+        "startedAt": "2026-11-04T16:41:40.248Z",
+        "durationMs": 7483,
+        "startupMs": 202,
+        "transport": "http-continuous",
+        "effectiveHost": "n05-eu3.rcs.revma.com",
+        "container": "mp3",
+        "codec": "mp3",
+        "profile": null,
+        "sampleRateHz": 44100,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "advertisedBitrateKbps": null,
+        "codecBitrateKbps": 128,
+        "measuredBitrateKbps": 128,
+        "networkKbps": 226,
+        "bitrateEvidence": "measured",
+        "sampleSeconds": 12,
+        "decodedSeconds": 11.9,
+        "decodeErrors": 0,
+        "icyName": "-",
+        "icyTitle": "RIHANNA - Only Girl",
+        "headersSummary": {
+          "content-type": "audio/mpeg",
+          "icy-name": "-",
+          "icy-metaint": "16000"
+        },
+        "manifestSummary": {}
+      }
+    },
+    {
+      "stationId": "fg:fg-dance",
+      "sourceId": "fg-dance-hls-kcgbx37uquhvv",
+      "outcome": {
+        "success": true,
+        "failureCode": null,
+        "failureDetail": null,
+        "startedAt": "2026-11-04T16:41:47.731Z",
+        "durationMs": 17262,
+        "startupMs": 448,
+        "transport": "hls",
+        "effectiveHost": "n04-eu3.rcs.revma.com",
+        "container": "aac",
+        "codec": "aac",
+        "profile": "LC",
+        "sampleRateHz": 44100,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "advertisedBitrateKbps": null,
+        "codecBitrateKbps": 124,
+        "measuredBitrateKbps": 128,
+        "networkKbps": 782,
+        "bitrateEvidence": "measured",
+        "sampleSeconds": 40,
+        "decodedSeconds": 40,
+        "decodeErrors": 0,
+        "icyName": null,
+        "icyTitle": null,
+        "headersSummary": {
+          "content-type": "application/vnd.apple.mpegurl; charset=UTF-8"
+        },
+        "manifestSummary": {
+          "playlistHost": "n04-eu3.rcs.revma.com",
+          "chosen": {
+            "bitrateKbps": null,
+            "reason": "audio-only variant (declared bandwidth)",
+            "codecs": [
+              "mp4a.40.2"
+            ]
+          },
+          "alternatives": [],
+          "targetDuration": 11
+        }
+      }
+    },
+    {
+      "stationId": "fg:fg-starter-fg-by-hakimakli",
+      "sourceId": "fg-starter-fg-by-hakimakli-mp3-vww68g69n98uv",
+      "outcome": {
+        "success": true,
+        "failureCode": null,
+        "failureDetail": null,
+        "startedAt": "2026-11-04T16:42:04.996Z",
+        "durationMs": 7292,
+        "startupMs": 158,
+        "transport": "http-continuous",
+        "effectiveHost": "n02-eu3.rcs.revma.com",
+        "container": "mp3",
+        "codec": "mp3",
+        "profile": null,
+        "sampleRateHz": 44100,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "advertisedBitrateKbps": null,
+        "codecBitrateKbps": 192,
+        "measuredBitrateKbps": 192,
+        "networkKbps": 337,
+        "bitrateEvidence": "measured",
+        "sampleSeconds": 12,
+        "decodedSeconds": 12,
+        "decodeErrors": 0,
+        "icyName": null,
+        "icyTitle": "OXIA - Domino (Ares Carter Remix)",
+        "headersSummary": {
+          "content-type": "audio/mpeg",
+          "icy-metaint": "16000"
+        },
+        "manifestSummary": {}
+      }
+    },
+    {
+      "stationId": "fg:fg-starter-fg-by-hakimakli",
+      "sourceId": "fg-starter-fg-by-hakimakli-hls-esyc4bn5rxhvv",
+      "outcome": {
+        "success": true,
+        "failureCode": null,
+        "failureDetail": null,
+        "startedAt": "2026-11-04T16:42:12.288Z",
+        "durationMs": 13030,
+        "startupMs": 70,
+        "transport": "hls",
+        "effectiveHost": "n03-eu3.rcs.revma.com",
+        "container": "aac",
+        "codec": "aac",
+        "profile": "LC",
+        "sampleRateHz": 44100,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "advertisedBitrateKbps": null,
+        "codecBitrateKbps": 112.3,
+        "measuredBitrateKbps": 128,
+        "networkKbps": 554,
+        "bitrateEvidence": "measured",
+        "sampleSeconds": 30,
+        "decodedSeconds": 30,
+        "decodeErrors": 0,
+        "icyName": null,
+        "icyTitle": null,
+        "headersSummary": {
+          "content-type": "application/vnd.apple.mpegurl; charset=UTF-8"
+        },
+        "manifestSummary": {
+          "playlistHost": "n03-eu3.rcs.revma.com",
+          "chosen": {
+            "bitrateKbps": null,
+            "reason": "audio-only variant (declared bandwidth)",
+            "codecs": [
+              "mp4a.40.2"
+            ]
+          },
+          "alternatives": [],
+          "targetDuration": 11
+        }
+      }
+    },
+    {
+      "stationId": "fg:fg-deep-dance",
+      "sourceId": "fg-deep-dance-mp3-tmbhq479n98uv",
+      "outcome": {
+        "success": true,
+        "failureCode": null,
+        "failureDetail": null,
+        "startedAt": "2026-11-04T16:42:25.318Z",
+        "durationMs": 7309,
+        "startupMs": 497,
+        "transport": "http-continuous",
+        "effectiveHost": "n01-eu3.rcs.revma.com",
+        "container": "mp3",
+        "codec": "mp3",
+        "profile": null,
+        "sampleRateHz": 44100,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "advertisedBitrateKbps": null,
+        "codecBitrateKbps": 192,
+        "measuredBitrateKbps": 192,
+        "networkKbps": 354,
+        "bitrateEvidence": "measured",
+        "sampleSeconds": 12,
+        "decodedSeconds": 12,
+        "decodeErrors": 0,
+        "icyName": null,
+        "icyTitle": "LANA DEL REY - Young and beautiful (Kevin Blanc rmx)",
+        "headersSummary": {
+          "content-type": "audio/mpeg",
+          "icy-metaint": "16000"
+        },
+        "manifestSummary": {}
+      }
+    },
+    {
+      "stationId": "fg:fg-deep-dance",
+      "sourceId": "fg-deep-dance-hls-1rd290m5rxhvv",
+      "outcome": {
+        "success": true,
+        "failureCode": null,
+        "failureDetail": null,
+        "startedAt": "2026-11-04T16:42:32.627Z",
+        "durationMs": 17291,
+        "startupMs": 43,
+        "transport": "hls",
+        "effectiveHost": "n05-eu3.rcs.revma.com",
+        "container": "aac",
+        "codec": "aac",
+        "profile": "LC",
+        "sampleRateHz": 44100,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "advertisedBitrateKbps": null,
+        "codecBitrateKbps": 121.6,
+        "measuredBitrateKbps": 128,
+        "networkKbps": 736,
+        "bitrateEvidence": "measured",
+        "sampleSeconds": 40,
+        "decodedSeconds": 40,
+        "decodeErrors": 0,
+        "icyName": null,
+        "icyTitle": null,
+        "headersSummary": {
+          "content-type": "application/vnd.apple.mpegurl; charset=UTF-8"
+        },
+        "manifestSummary": {
+          "playlistHost": "n05-eu3.rcs.revma.com",
+          "chosen": {
+            "bitrateKbps": null,
+            "reason": "audio-only variant (declared bandwidth)",
+            "codecs": [
+              "mp4a.40.2"
+            ]
+          },
+          "alternatives": [],
+          "targetDuration": 11
+        }
+      }
+    },
+    {
+      "stationId": "fg:fg-chic-spa",
+      "sourceId": "fg-chic-spa-mp3-ffynknv9n98uv",
+      "outcome": {
+        "success": true,
+        "failureCode": null,
+        "failureDetail": null,
+        "startedAt": "2026-11-04T16:42:49.918Z",
+        "durationMs": 7267,
+        "startupMs": 198,
+        "transport": "http-continuous",
+        "effectiveHost": "n09-eu1.rcs.revma.com",
+        "container": "mp3",
+        "codec": "mp3",
+        "profile": null,
+        "sampleRateHz": 44100,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "advertisedBitrateKbps": null,
+        "codecBitrateKbps": 192,
+        "measuredBitrateKbps": 192,
+        "networkKbps": 338,
+        "bitrateEvidence": "measured",
+        "sampleSeconds": 12,
+        "decodedSeconds": 11.9,
+        "decodeErrors": 0,
+        "icyName": null,
+        "icyTitle": "Dopplereffekt - Multiverse Wavefunction",
+        "headersSummary": {
+          "content-type": "audio/mpeg",
+          "icy-metaint": "16000"
+        },
+        "manifestSummary": {}
+      }
+    },
+    {
+      "stationId": "fg:fg-chic-spa",
+      "sourceId": "fg-chic-spa-hls-3f12dmp5rxhvv",
+      "outcome": {
+        "success": true,
+        "failureCode": null,
+        "failureDetail": null,
+        "startedAt": "2026-11-04T16:42:57.185Z",
+        "durationMs": 10042,
+        "startupMs": 42,
+        "transport": "hls",
+        "effectiveHost": "n06-eu1.rcs.revma.com",
+        "container": "aac",
+        "codec": "aac",
+        "profile": "LC",
+        "sampleRateHz": 44100,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "advertisedBitrateKbps": null,
+        "codecBitrateKbps": 131.6,
+        "measuredBitrateKbps": 128,
+        "networkKbps": 735,
+        "bitrateEvidence": "measured",
+        "sampleSeconds": 40,
+        "decodedSeconds": 40,
+        "decodeErrors": 0,
+        "icyName": null,
+        "icyTitle": null,
+        "headersSummary": {
+          "content-type": "application/vnd.apple.mpegurl; charset=UTF-8"
+        },
+        "manifestSummary": {
+          "playlistHost": "n06-eu1.rcs.revma.com",
+          "chosen": {
+            "bitrateKbps": null,
+            "reason": "audio-only variant (declared bandwidth)",
+            "codecs": [
+              "mp4a.40.2"
+            ]
+          },
+          "alternatives": [],
+          "targetDuration": 11
+        }
+      }
+    },
+    {
+      "stationId": "fg:fg-disco-funk",
+      "sourceId": "fg-disco-funk-mp3-cpkhx08pq18uv",
+      "outcome": {
+        "success": true,
+        "failureCode": null,
+        "failureDetail": null,
+        "startedAt": "2026-11-04T16:43:07.227Z",
+        "durationMs": 7298,
+        "startupMs": 217,
+        "transport": "http-continuous",
+        "effectiveHost": "n07-eu1.rcs.revma.com",
+        "container": "mp3",
+        "codec": "mp3",
+        "profile": null,
+        "sampleRateHz": 44100,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "advertisedBitrateKbps": null,
+        "codecBitrateKbps": 192,
+        "measuredBitrateKbps": 192,
+        "networkKbps": 339,
+        "bitrateEvidence": "measured",
+        "sampleSeconds": 12,
+        "decodedSeconds": 11.9,
+        "decodeErrors": 0,
+        "icyName": null,
+        "icyTitle": "EVELYN CHAMPAGNE KING - Shame",
+        "headersSummary": {
+          "content-type": "audio/mpeg",
+          "icy-metaint": "16000"
+        },
+        "manifestSummary": {}
+      }
+    },
+    {
+      "stationId": "fg:fg-disco-funk",
+      "sourceId": "fg-disco-funk-hls-vcxvzyn5rxhvv",
+      "outcome": {
+        "success": true,
+        "failureCode": null,
+        "failureDetail": null,
+        "startedAt": "2026-11-04T16:43:14.525Z",
+        "durationMs": 7673,
+        "startupMs": 45,
+        "transport": "hls",
+        "effectiveHost": "n03-eu1.rcs.revma.com",
+        "container": "aac",
+        "codec": "aac",
+        "profile": "LC",
+        "sampleRateHz": 44100,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "advertisedBitrateKbps": null,
+        "codecBitrateKbps": 136.8,
+        "measuredBitrateKbps": 128,
+        "networkKbps": 552,
+        "bitrateEvidence": "measured",
+        "sampleSeconds": 30,
+        "decodedSeconds": 30,
+        "decodeErrors": 0,
+        "icyName": null,
+        "icyTitle": null,
+        "headersSummary": {
+          "content-type": "application/vnd.apple.mpegurl; charset=UTF-8"
+        },
+        "manifestSummary": {
+          "playlistHost": "n03-eu1.rcs.revma.com",
+          "chosen": {
+            "bitrateKbps": null,
+            "reason": "audio-only variant (declared bandwidth)",
+            "codecs": [
+              "mp4a.40.2"
+            ]
+          },
+          "alternatives": [],
+          "targetDuration": 11
+        }
+      }
+    },
+    {
+      "stationId": "fg:fg-classics",
+      "sourceId": "fg-classics-mp3-37n8gxv9n98uv",
+      "outcome": {
+        "success": true,
+        "failureCode": null,
+        "failureDetail": null,
+        "startedAt": "2026-11-04T16:43:22.198Z",
+        "durationMs": 7272,
+        "startupMs": 507,
+        "transport": "http-continuous",
+        "effectiveHost": "n07-eu1.rcs.revma.com",
+        "container": "mp3",
+        "codec": "mp3",
+        "profile": null,
+        "sampleRateHz": 44100,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "advertisedBitrateKbps": null,
+        "codecBitrateKbps": 192,
+        "measuredBitrateKbps": 192,
+        "networkKbps": 354,
+        "bitrateEvidence": "measured",
+        "sampleSeconds": 12,
+        "decodedSeconds": 11.9,
+        "decodeErrors": 0,
+        "icyName": null,
+        "icyTitle": "SOPHIE ELLIS-BEXTOR - Murder on the dancefloor (Phunk investigation)",
+        "headersSummary": {
+          "content-type": "audio/mpeg",
+          "icy-metaint": "16000"
+        },
+        "manifestSummary": {}
+      }
+    },
+    {
+      "stationId": "fg:fg-classics",
+      "sourceId": "fg-classics-hls-twxsptp5rxhvv",
+      "outcome": {
+        "success": false,
+        "failureCode": "HTTP_TIMEOUT",
+        "failureDetail": "The stream server did not respond in time.",
+        "startedAt": "2026-11-04T16:43:29.470Z",
+        "durationMs": 15047,
+        "startupMs": null,
+        "transport": "unknown",
+        "effectiveHost": null,
+        "container": null,
+        "codec": null,
+        "profile": null,
+        "sampleRateHz": null,
+        "channels": null,
+        "channelLayout": null,
+        "advertisedBitrateKbps": null,
+        "codecBitrateKbps": null,
+        "measuredBitrateKbps": null,
+        "networkKbps": null,
+        "bitrateEvidence": "unknown",
+        "sampleSeconds": null,
+        "decodedSeconds": null,
+        "decodeErrors": 0,
+        "icyName": null,
+        "icyTitle": null,
+        "headersSummary": {},
+        "manifestSummary": {}
+      }
+    },
+    {
+      "stationId": "fg:fg-mix-house",
+      "sourceId": "fg-mix-house-mp3-5kucq079n98uv",
+      "outcome": {
+        "success": true,
+        "failureCode": null,
+        "failureDetail": null,
+        "startedAt": "2026-11-04T16:43:44.517Z",
+        "durationMs": 7277,
+        "startupMs": 289,
+        "transport": "http-continuous",
+        "effectiveHost": "n01-eu1.rcs.revma.com",
+        "container": "mp3",
+        "codec": "mp3",
+        "profile": null,
+        "sampleRateHz": 44100,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "advertisedBitrateKbps": null,
+        "codecBitrateKbps": 192,
+        "measuredBitrateKbps": 192,
+        "networkKbps": 342,
+        "bitrateEvidence": "measured",
+        "sampleSeconds": 12,
+        "decodedSeconds": 11.9,
+        "decodeErrors": 0,
+        "icyName": null,
+        "icyTitle": "FG MIX HOUSE - DAVID PENN",
+        "headersSummary": {
+          "content-type": "audio/mpeg",
+          "icy-metaint": "16000"
+        },
+        "manifestSummary": {}
+      }
+    },
+    {
+      "stationId": "fg:fg-mix-house",
+      "sourceId": "fg-mix-house-hls-n54bm7n5rxhvv",
+      "outcome": {
+        "success": true,
+        "failureCode": null,
+        "failureDetail": null,
+        "startedAt": "2026-11-04T16:43:51.794Z",
+        "durationMs": 13573,
+        "startupMs": 52,
+        "transport": "hls",
+        "effectiveHost": "n07-eu1.rcs.revma.com",
+        "container": "aac",
+        "codec": "aac",
+        "profile": "LC",
+        "sampleRateHz": 44100,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "advertisedBitrateKbps": null,
+        "codecBitrateKbps": 124.4,
+        "measuredBitrateKbps": 128,
+        "networkKbps": 737,
+        "bitrateEvidence": "measured",
+        "sampleSeconds": 40,
+        "decodedSeconds": 40,
+        "decodeErrors": 0,
+        "icyName": null,
+        "icyTitle": null,
+        "headersSummary": {
+          "content-type": "application/vnd.apple.mpegurl; charset=UTF-8"
+        },
+        "manifestSummary": {
+          "playlistHost": "n07-eu1.rcs.revma.com",
+          "chosen": {
+            "bitrateKbps": null,
+            "reason": "audio-only variant (declared bandwidth)",
+            "codecs": [
+              "mp4a.40.2"
+            ]
+          },
+          "alternatives": [],
+          "targetDuration": 11
+        }
+      }
+    },
+    {
+      "stationId": "fg:fg-mix-afro-house",
+      "sourceId": "fg-mix-afro-house-mp3-uv0x66bap98uv",
+      "outcome": {
+        "success": true,
+        "failureCode": null,
+        "failureDetail": null,
+        "startedAt": "2026-11-04T16:44:05.367Z",
+        "durationMs": 7279,
+        "startupMs": 812,
+        "transport": "http-continuous",
+        "effectiveHost": "n01-eu1.rcs.revma.com",
+        "container": "mp3",
+        "codec": "mp3",
+        "profile": null,
+        "sampleRateHz": 44100,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "advertisedBitrateKbps": null,
+        "codecBitrateKbps": 192,
+        "measuredBitrateKbps": 192,
+        "networkKbps": 370,
+        "bitrateEvidence": "measured",
+        "sampleSeconds": 12,
+        "decodedSeconds": 11.9,
+        "decodeErrors": 0,
+        "icyName": null,
+        "icyTitle": "AD",
+        "headersSummary": {
+          "content-type": "audio/mpeg",
+          "icy-metaint": "16000"
+        },
+        "manifestSummary": {}
+      }
+    },
+    {
+      "stationId": "fg:fg-mix-afro-house",
+      "sourceId": "fg-mix-afro-house-hls-ycm6h2p5rxhvv",
+      "outcome": {
+        "success": true,
+        "failureCode": null,
+        "failureDetail": null,
+        "startedAt": "2026-11-04T16:44:12.646Z",
+        "durationMs": 16318,
+        "startupMs": 81,
+        "transport": "hls",
+        "effectiveHost": "n02-eu3.rcs.revma.com",
+        "container": "aac",
+        "codec": "aac",
+        "profile": "LC",
+        "sampleRateHz": 44100,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "advertisedBitrateKbps": null,
+        "codecBitrateKbps": 121.6,
+        "measuredBitrateKbps": 128,
+        "networkKbps": 739,
+        "bitrateEvidence": "measured",
+        "sampleSeconds": 40,
+        "decodedSeconds": 40,
+        "decodeErrors": 0,
+        "icyName": null,
+        "icyTitle": null,
+        "headersSummary": {
+          "content-type": "application/vnd.apple.mpegurl; charset=UTF-8"
+        },
+        "manifestSummary": {
+          "playlistHost": "n02-eu3.rcs.revma.com",
+          "chosen": {
+            "bitrateKbps": null,
+            "reason": "audio-only variant (declared bandwidth)",
+            "codecs": [
+              "mp4a.40.2"
+            ]
+          },
+          "alternatives": [],
+          "targetDuration": 11
+        }
+      }
+    },
+    {
+      "stationId": "fg:fg-training",
+      "sourceId": "fg-training-mp3-8daakscap98uv",
+      "outcome": {
+        "success": true,
+        "failureCode": null,
+        "failureDetail": null,
+        "startedAt": "2026-11-04T16:44:28.965Z",
+        "durationMs": 7292,
+        "startupMs": 8,
+        "transport": "http-continuous",
+        "effectiveHost": "n05-eu3.rcs.revma.com",
+        "container": "mp3",
+        "codec": "mp3",
+        "profile": null,
+        "sampleRateHz": 44100,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "advertisedBitrateKbps": null,
+        "codecBitrateKbps": 192,
+        "measuredBitrateKbps": 192,
+        "networkKbps": 329,
+        "bitrateEvidence": "measured",
+        "sampleSeconds": 12,
+        "decodedSeconds": 11.9,
+        "decodeErrors": 0,
+        "icyName": null,
+        "icyTitle": "AFROBEE - Another Love (Afro House Version)",
+        "headersSummary": {
+          "content-type": "audio/mpeg",
+          "icy-metaint": "16000"
+        },
+        "manifestSummary": {}
+      }
+    },
+    {
+      "stationId": "fg:fg-training",
+      "sourceId": "fg-training-hls-51sgywp5rxhvv",
+      "outcome": {
+        "success": false,
+        "failureCode": "HTTP_TIMEOUT",
+        "failureDetail": "The stream server did not respond in time.",
+        "startedAt": "2026-11-04T16:44:36.257Z",
+        "durationMs": 15053,
+        "startupMs": null,
+        "transport": "unknown",
+        "effectiveHost": null,
+        "container": null,
+        "codec": null,
+        "profile": null,
+        "sampleRateHz": null,
+        "channels": null,
+        "channelLayout": null,
+        "advertisedBitrateKbps": null,
+        "codecBitrateKbps": null,
+        "measuredBitrateKbps": null,
+        "networkKbps": null,
+        "bitrateEvidence": "unknown",
+        "sampleSeconds": null,
+        "decodedSeconds": null,
+        "decodeErrors": 0,
+        "icyName": null,
+        "icyTitle": null,
+        "headersSummary": {},
+        "manifestSummary": {}
+      }
+    },
+    {
+      "stationId": "fg:fg-belgium",
+      "sourceId": "fg-belgium-mp3-5wesqhfap98uv",
+      "outcome": {
+        "success": true,
+        "failureCode": null,
+        "failureDetail": null,
+        "startedAt": "2026-11-04T16:44:51.310Z",
+        "durationMs": 7272,
+        "startupMs": 29,
+        "transport": "http-continuous",
+        "effectiveHost": "n01-eu3.rcs.revma.com",
+        "container": "mp3",
+        "codec": "mp3",
+        "profile": null,
+        "sampleRateHz": 48000,
+        "channels": 2,
+        "channelLayout": "stereo",
+        "advertisedBitrateKbps": null,
+        "codecBitrateKbps": 192,
+        "measuredBitrateKbps": 192,
+        "networkKbps": 331,
+        "bitrateEvidence": "measured",
+        "sampleSeconds": 12,
+        "decodedSeconds": 12,
+        "decodeErrors": 0,
+        "icyName": "Radio FG Belgium",
+        "icyTitle": "DEADMAU5 - Ghost n Stuff",
+        "headersSummary": {
+          "content-type": "audio/mpeg",
+          "icy-name": "Radio FG Belgium",
+          "icy-genre": "Dance",
+          "icy-description": "Fuckin Good Music",
+          "icy-metaint": "16000"
+        },
+        "manifestSummary": {}
+      }
+    },
+    {
+      "stationId": "fg:fg-belgium",
+      "sourceId": "fg-belgium-hls-br6wu5p5rxhvv",
+      "outcome": {
+        "success": false,
+        "failureCode": "HTTP_TIMEOUT",
+        "failureDetail": "The stream server did not respond in time.",
+        "startedAt": "2026-11-04T16:44:58.582Z",
+        "durationMs": 15053,
+        "startupMs": null,
+        "transport": "unknown",
+        "effectiveHost": null,
+        "container": null,
+        "codec": null,
+        "profile": null,
+        "sampleRateHz": null,
+        "channels": null,
+        "channelLayout": null,
+        "advertisedBitrateKbps": null,
+        "codecBitrateKbps": null,
+        "measuredBitrateKbps": null,
+        "networkKbps": null,
+        "bitrateEvidence": "unknown",
+        "sampleSeconds": null,
+        "decodedSeconds": null,
+        "decodeErrors": 0,
+        "icyName": null,
+        "icyTitle": null,
+        "headersSummary": {},
+        "manifestSummary": {}
+      }
+    }
+  ],
+  "comparisons": []
+}

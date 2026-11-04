@@ -37,8 +37,8 @@
       "codecHint": null,
       "provenance": "official-player",
       "provenanceDetail": "Official radiofg.com FM stream entry 5gWkrl9VKE (\"RADIO FG\", shown in the header player as \"Live : FG DJ RADIO\") redirected to this mount on 2026-10-31. That entry shares the wknqhm4yuchvv MP3 mount with the FG DJ RADIO webradio entry z0fDRzUSa2.",
-      "enabled": false,
-      "disabledReason": "Plays (AAC-LC, 128 kbps measured on 2026-11-03) but adds nothing: the station's direct stream measured 128 kbps the same day, and the official player only uses the direct stream."
+      "enabled": true,
+      "disabledReason": null
     },
     {
       "id": "fg-dj-radio-aac-gk9y379uquhvv",
@@ -76,8 +76,8 @@
       "codecHint": null,
       "provenance": "official-player",
       "provenanceDetail": "Official radiofg.com web player entry RW32opoTnZ redirected to this mount on 2026-10-31.",
-      "enabled": false,
-      "disabledReason": "Plays (AAC-LC, 128 kbps measured on 2026-11-03) but adds nothing: the station's direct stream measured 128 kbps the same day, and the official player only uses the direct stream."
+      "enabled": true,
+      "disabledReason": null
     },
     {
       "id": "fg-dance-mp3-zfad8vm4srhvv",
@@ -102,8 +102,8 @@
       "codecHint": null,
       "provenance": "official-player",
       "provenanceDetail": "Official radiofg.com web player entry 7aU8RbLARV redirected to this mount on 2026-10-31.",
-      "enabled": false,
-      "disabledReason": "Failed the live check on 2026-11-03 (HTTP_TIMEOUT). The official player only uses the station's direct stream."
+      "enabled": true,
+      "disabledReason": null
     },
     {
       "id": "maxximum-mp3-nwhyn2c6p98uv",
@@ -128,8 +128,8 @@
       "codecHint": null,
       "provenance": "official-player",
       "provenanceDetail": "Official radiofg.com web player entry UQDF1VGpkJ redirected to this mount on 2026-10-31.",
-      "enabled": false,
-      "disabledReason": "Plays (AAC-LC, 128 kbps measured on 2026-11-03) but adds nothing: the station's direct stream measured 128 kbps the same day, and the official player only uses the direct stream."
+      "enabled": true,
+      "disabledReason": null
     },
     {
       "id": "fg-starter-fg-by-hakimakli-mp3-vww68g69n98uv",
@@ -154,8 +154,8 @@
       "codecHint": null,
       "provenance": "official-player",
       "provenanceDetail": "Official radiofg.com web player entry sd1AI1njys redirected to this mount on 2026-10-31.",
-      "enabled": false,
-      "disabledReason": "Failed the live check on 2026-11-03 (HTTP_TIMEOUT). The official player only uses the station's direct stream."
+      "enabled": true,
+      "disabledReason": null
     },
     {
       "id": "fg-amsterdam-dance-event-mp3-asxs2vgk5rcwv",
@@ -206,8 +206,8 @@
       "codecHint": null,
       "provenance": "official-player",
       "provenanceDetail": "Official radiofg.com web player entry HJCBHp5Pv4 redirected to this mount on 2026-10-31.",
-      "enabled": false,
-      "disabledReason": "Failed the live check on 2026-11-03 (HTTP_TIMEOUT). The official player only uses the station's direct stream."
+      "enabled": true,
+      "disabledReason": null
     },
     {
       "id": "fg-remix-mp3-w1psqtmd342vv",
@@ -258,8 +258,8 @@
       "codecHint": null,
       "provenance": "official-player",
       "provenanceDetail": "Official radiofg.com web player entry TY7ilzEFzJ redirected to this mount on 2026-10-31.",
-      "enabled": false,
-      "disabledReason": "Plays (AAC-LC, 128 kbps measured on 2026-11-03) but adds nothing: the station's direct stream measured 192 kbps the same day, and the official player only uses the direct stream."
+      "enabled": true,
+      "disabledReason": null
     },
     {
       "id": "fg-hits-mp3-mxfbr0dusd3vv",
@@ -362,8 +362,8 @@
       "codecHint": null,
       "provenance": "official-player",
       "provenanceDetail": "Official radiofg.com web player entry dIkofhW0zB redirected to this mount on 2026-10-31.",
-      "enabled": false,
-      "disabledReason": "Plays (AAC-LC, 128 kbps measured on 2026-11-03) but adds nothing: the station's direct stream measured 192 kbps the same day, and the official player only uses the direct stream."
+      "enabled": true,
+      "disabledReason": null
     },
     {
       "id": "fg-chic-lounge-mp3-1grpmk88n98uv",
@@ -388,8 +388,8 @@
       "codecHint": null,
       "provenance": "official-player",
       "provenanceDetail": "Official radiofg.com web player entry yjz51VQf2J redirected to this mount on 2026-10-31.",
-      "enabled": false,
-      "disabledReason": "Plays (AAC-LC, 127.9 kbps measured on 2026-11-03) but adds nothing: the station's direct stream measured 192 kbps the same day, and the official player only uses the direct stream."
+      "enabled": true,
+      "disabledReason": null
     },
     {
       "id": "fg-chic-mix-mp3-9sw5gp3w7guvv",
@@ -466,8 +466,8 @@
       "codecHint": null,
       "provenance": "official-player",
       "provenanceDetail": "Official radiofg.com web player entry QaKQL1fU1X redirected to this mount on 2026-10-31.",
-      "enabled": false,
-      "disabledReason": "Plays (AAC-LC, 128 kbps measured on 2026-11-03) but adds nothing: the station's direct stream measured 192 kbps the same day, and the official player only uses the direct stream."
+      "enabled": true,
+      "disabledReason": null
     },
     {
       "id": "fg-chic-spa-mp3-ffynknv9n98uv",
@@ -492,8 +492,8 @@
       "codecHint": null,
       "provenance": "official-player",
       "provenanceDetail": "Official radiofg.com web player entry 8BgfEjVadz redirected to this mount on 2026-10-31.",
-      "enabled": false,
-      "disabledReason": "Failed the live check on 2026-11-03 (HTTP_TIMEOUT). The official player only uses the station's direct stream."
+      "enabled": true,
+      "disabledReason": null
     },
     {
       "id": "fg-yoga-mp3-xryf0bck5rcwv",
@@ -596,8 +596,8 @@
       "codecHint": null,
       "provenance": "official-player",
       "provenanceDetail": "Official radiofg.com web player entry YO0c3jE07e redirected to this mount on 2026-10-31.",
-      "enabled": false,
-      "disabledReason": "Failed the live check on 2026-11-03 (HTTP_TIMEOUT). The official player only uses the station's direct stream."
+      "enabled": true,
+      "disabledReason": null
     },
     {
       "id": "fg-classics-mp3-37n8gxv9n98uv",
@@ -623,7 +623,7 @@
       "provenance": "official-player",
       "provenanceDetail": "Official radiofg.com web player entry W1dGE6vop9 redirected to this mount on 2026-10-31.",
       "enabled": false,
-      "disabledReason": "Failed the live check on 2026-11-03 (HTTP_TIMEOUT). The official player only uses the station's direct stream."
+      "disabledReason": "Timed out (HTTP_TIMEOUT) in the live checks on 2026-11-03 and 2026-11-04. Check again on or after 2026-11-10."
     },
     {
       "id": "maxximum-90s-mp3-maygqbdap98uv",
@@ -648,8 +648,8 @@
       "codecHint": null,
       "provenance": "official-player",
       "provenanceDetail": "Official radiofg.com web player entry UEoZIbjJdj redirected to this mount on 2026-10-31.",
-      "enabled": false,
-      "disabledReason": "Plays (AAC-LC, 128 kbps measured on 2026-11-03) but adds nothing: the station's direct stream measured 192 kbps the same day, and the official player only uses the direct stream."
+      "enabled": true,
+      "disabledReason": null
     },
     {
       "id": "fg-new-wave-mp3-4vpbw1ad633vv",
@@ -804,8 +804,8 @@
       "codecHint": null,
       "provenance": "official-player",
       "provenanceDetail": "Official radiofg.com web player entry kVyKhEEe1d redirected to this mount on 2026-10-31.",
-      "enabled": false,
-      "disabledReason": "Failed the live check on 2026-11-03 (HTTP_TIMEOUT). The official player only uses the station's direct stream."
+      "enabled": true,
+      "disabledReason": null
     },
     {
       "id": "fg-mix-afro-house-mp3-uv0x66bap98uv",
@@ -830,8 +830,8 @@
       "codecHint": null,
       "provenance": "official-player",
       "provenanceDetail": "Official radiofg.com web player entry Z32AlGsNvJ redirected to this mount on 2026-10-31.",
-      "enabled": false,
-      "disabledReason": "Failed the live check on 2026-11-03 (HTTP_TIMEOUT). The official player only uses the station's direct stream."
+      "enabled": true,
+      "disabledReason": null
     },
     {
       "id": "fg-buddha-bar-mp3-zn73zqg1t7uvv",
@@ -1000,7 +1000,7 @@
       "provenance": "official-player",
       "provenanceDetail": "Official radiofg.com web player entry mSfORCFRRb redirected to this mount on 2026-10-31.",
       "enabled": false,
-      "disabledReason": "Failed the live check on 2026-11-03 (HTTP_TIMEOUT). The official player only uses the station's direct stream."
+      "disabledReason": "Timed out (HTTP_TIMEOUT) in the live checks on 2026-11-03 and 2026-11-04. Check again on or after 2026-11-10."
     },
     {
       "id": "fg-on-the-road-mp3-yg315gmd633vv",
@@ -1480,8 +1480,8 @@
       "codecHint": null,
       "provenance": "official-player",
       "provenanceDetail": "Official radiofg.com web player entry Nn26ftlm1e redirected to this mount on 2026-10-31.",
-      "enabled": false,
-      "disabledReason": "Plays (AAC-LC, 128 kbps measured on 2026-11-03) but adds nothing: the station's direct stream measured 192 kbps the same day, and the official player only uses the direct stream."
+      "enabled": true,
+      "disabledReason": null
     },
     {
       "id": "fg-belgium-mp3-5wesqhfap98uv",
@@ -1507,7 +1507,7 @@
       "provenance": "official-player",
       "provenanceDetail": "Official radiofg.com web player entry mWtSvNivqQ redirected to this mount on 2026-10-31.",
       "enabled": false,
-      "disabledReason": "Failed the live check on 2026-11-03 (HTTP_TIMEOUT). The official player only uses the station's direct stream."
+      "disabledReason": "Timed out (HTTP_TIMEOUT) in the live checks on 2026-11-03 and 2026-11-04. Check again on or after 2026-11-10."
     },
     {
       "id": "fg-chic-berlin-aac-7pww0pn0742vv",
@@ -1532,8 +1532,8 @@
       "codecHint": null,
       "provenance": "official-player",
       "provenanceDetail": "Official radiofg.com web player entry DxsBAhrtub redirected to this mount on 2026-10-31.",
-      "enabled": false,
-      "disabledReason": "Plays (AAC-LC, 128 kbps measured on 2026-11-03) but adds nothing: the station's direct stream measured 127.9 kbps the same day, and the official player only uses the direct stream."
+      "enabled": true,
+      "disabledReason": null
     },
     {
       "id": "fg-chic-london-aac-8ha6164v5znwv",
@@ -1558,8 +1558,8 @@
       "codecHint": null,
       "provenance": "official-player",
       "provenanceDetail": "Official radiofg.com web player entry b1SVanSa5f redirected to this mount on 2026-10-31.",
-      "enabled": false,
-      "disabledReason": "Plays (AAC-LC, 128 kbps measured on 2026-11-03) but adds nothing: the station's direct stream measured 128 kbps the same day, and the official player only uses the direct stream."
+      "enabled": true,
+      "disabledReason": null
     },
     {
       "id": "fg-chic-ibiza-mp3-z8v9hmhp0f3vv",
