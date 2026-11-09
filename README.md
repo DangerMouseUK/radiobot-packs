@@ -19,7 +19,7 @@ The list of available packs, with their owners, countries and languages, is in t
 
 ## How the library is published
 
-Every change to `main` that touches a pack is checked again, then published as a new [release](https://github.com/DangerMouseUK/radiobot-packs/releases):
+Every change to `main` that touches a pack, a collection or `withdrawn.json` is checked again, then published as a new [release](https://github.com/DangerMouseUK/radiobot-packs/releases):
 
 - `index.json` lists every pack: its version, owner, countries, languages, station and source counts, and the address and SHA-256 fingerprint of its bundle;
 - `<pack-id>.json` is one bundle per pack, holding its `pack.json`, `stations.json` and `sources.json`.

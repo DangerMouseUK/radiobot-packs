@@ -7,7 +7,7 @@ Instructions for AI coding agents (and people) working in this repository. Read 
 The station pack library for **Radio Bot**, a self-hosted Discord bot that plays live internet radio. The bot lives in [DangerMouseUK/radiobot](https://github.com/DangerMouseUK/radiobot); this repository holds only its station packs. The repository is **public**.
 
 - Each pack is a folder, `packs/<pack-id>/`, covering one company: a broadcaster, a holding company or a curated list.
-- On every push to `main` that touches packs, CI builds `index.json` plus one `<pack-id>.json` bundle per pack and publishes them as the assets of a GitHub release. Installed bots read `releases/latest/download/index.json`. The formats are defined in the bot's `src/catalogue/pack-library.ts`.
+- On every push to `main` that touches `packs/`, `collections/` or `withdrawn.json` (or when the workflow is run by hand), `publish.yml` runs every check again, builds `index.json` plus one `<pack-id>.json` bundle per pack with the bot's `pack-author.ts build-library`, and publishes them as the assets of a new GitHub release tagged `library-YYYY.MM.DD-<run>`, marked latest. Installed bots read `releases/latest/download/index.json` and refuse a bundle whose SHA-256 doesn't match. The formats and their limits (an index of at most 2 MiB, bundles of at most 8 MiB) are defined in the bot's `src/catalogue/pack-library.ts` and described in its [catalog/README.md](https://github.com/DangerMouseUK/radiobot/blob/main/catalog/README.md), which is also the reference for every field of `pack.json`, `stations.json` and `sources.json`.
 - Discord installs packs only from this library, so this repository is the quality gate. Every pack is reviewed.
 
 ## Before you touch a pack
@@ -19,15 +19,19 @@ The skill is only offered to an agent started in this repository's folder. If yo
 ## Layout
 
 ```text
-packs/<pack-id>/          pack.json, stations.json, sources.json, SOURCE_PROVENANCE.md, evidence/
+packs/<pack-id>/          pack.json, stations.json, sources.json, SOURCE_PROVENANCE.md, and evidence/ with
+                          the --json reports of live checks (probe-YYYY-MM-DD.json, compare-YYYY-MM-DD.json)
 pack-ids.json             every pack id ever used; ids are only ever added
 withdrawn.json            packs removed from the library (TAKEDOWN.md)
-collections/              hand-picked collections, one <id>.json each (country collections are automatic)
+collections/              hand-picked collections, one <id>.json each (country collections, country-<code>,
+                          are automatic); collections/README.md describes the format
 playbook/PLAYBOOK.md      the pack procedure, for people
 .claude/skills/station-pack/SKILL.md   the same procedure, as a Claude Code skill
 scripts/ci-check.mjs      every CI check, runnable locally (Node 24, no dependencies)
-.github/workflows/        check.yml (pull requests and main), publish.yml (releases)
+.github/workflows/        check.yml (pull requests and main: ci-check, gitleaks), publish.yml (releases)
+.github/pull_request_template.md   the evidence and checklist every pull request fills in
 TAKEDOWN.md               how rights holders ask for removal, and what happens
+README.md                 for people browsing the library; CLAUDE.md imports this file
 ```
 
 ## Commands
@@ -46,6 +50,10 @@ node ../radiobot/scripts/validate-catalogue.ts --pack packs/<pack-id> --probe --
   --json packs/<pack-id>/evidence/probe-YYYY-MM-DD.json   # the live check: only with a person's yes
 ```
 
+`ci-check.mjs` finds the bot with `--bot <dir>`, else `RADIO_BOT_DIR`, else `.radiobot` (where CI checks it out), else `../radiobot`. It checks `pack-ids.json`, `withdrawn.json` and `collections/`; that every folder in `packs/` is a valid pack id listed in `pack-ids.json` (not `custom` or `index`, which are reserved), not withdrawn, and holds no artwork or audio; that the skill matches the playbook; every pack with `validate-catalogue --strict`; with `--base`, that no id was removed and no pack folder deleted unless withdrawn, and `diff-check` on every changed pack; and a trial `build-library`, read back with the bot's own `parseLibraryIndex()` and `checkBundle()`.
+
+`--strict` adds the rules for library packs to the bot's schema checks (the full list is under "Strict checks for library packs" in the bot's `catalog/README.md`): `pack.json` has a `version`, an `owner`, at least one country and one language; every source id starts with `<pack-id>-` or `<station-slug>-` and appears in `SOURCE_PROVENANCE.md`; no source URL looks signed or expiring; no images; and the live-check rules in hard rule 13.
+
 **Definition of done:** `node scripts/ci-check.mjs --base origin/main` passes, and the pull request template is filled in.
 
 ## Hard rules
@@ -63,12 +71,14 @@ node ../radiobot/scripts/validate-catalogue.ts --pack packs/<pack-id> --probe --
 11. **Nothing personal** anywhere in the repository: no people's names, e-mail addresses, IP addresses, Discord server, channel or user ids, or tokens.
 12. **Withdrawals** follow [TAKEDOWN.md](TAKEDOWN.md): the folder goes, an entry (`id`, `name`, `reason`, `date`) goes into `withdrawn.json`, and the id stays in `pack-ids.json`.
 13. **New packs need a live check.** Strict validation requires that the newest probe report in `evidence/` checks the pack's own sources, that at least one of them played and that FFmpeg ran, so a pack can't be published until a person has allowed and run `--probe`. It warns about enabled sources that failed. Switch a source off (`enabled: false`, with a reason) only when it is refused (HTTP 401, 403 or 451), plays another station, is unsafe, or has failed for 7 days (two failed checks at least 7 days apart); a single timeout, server error or "not found" is noted and checked again another day. Never switch off a source that plays the right station because another is as good or better: the bot ranks them and fails over.
-14. **`pack-author new` never edits `pack-ids.json`.** Add a new pack's id there yourself, at the end.
+14. **`pack-author new` never edits `pack-ids.json`.** It only refuses an id already listed there; add a new pack's id yourself, at the end.
+15. **`minBotVersion` only when a pack needs it.** CI validates against the bot's `main` branch (or `RADIO_BOT_REF`), but installed bots may be older releases, and an older bot silently ignores fields it doesn't know. When a pack relies on something only newer bots have (a new field, or a sync adapter older bots lack), set `minBotVersion` in `pack.json` to the first release that has it (`X.Y.Z`): older bots then skip or refuse the pack instead of misreading it. Otherwise leave it `null`.
 
 ## CI and workflows
 
 - `scripts/ci-check.mjs` holds the check logic so it runs the same locally and in CI. Keep it dependency-free and runnable on Node 24 on Linux, macOS and Windows.
-- The workflows check out the bot at `${{ vars.RADIO_BOT_REF || 'main' }}`. Set the `RADIO_BOT_REF` repository variable to test against a bot branch or tag.
+- `check.yml` runs on every pull request and every push to `main`: `ci-check.mjs` (with the pull request's base, or the commit before the push, as `--base`) and a gitleaks scan of the whole history. `publish.yml` runs `ci-check.mjs` again before it builds, so a broken library is never published, and never runs two publishes at once.
+- The workflows check out the bot at `${{ vars.RADIO_BOT_REF || 'main' }}` and install its production dependencies only (`--prod --ignore-scripts`: no FFmpeg, so CI can never run a live check). Set the `RADIO_BOT_REF` repository variable to test against a bot branch or tag.
 - Pin every third-party (non-`actions/*`) action by full commit SHA with a version comment.
 - `publish.yml` creates the releases. Never create, edit or delete releases or tags by hand unless the maintainer asks.
 
