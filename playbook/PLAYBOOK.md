@@ -122,7 +122,7 @@ Answer every question. One "no" means the stream, or the whole company, can't go
    - `categories`, if the stations fall into clear groups;
    - `snapshotDate`: the date you took the station list;
    - `sync`: only if the official list matches one of the bot's sync adapters (`webradio-apidata`, `json-name-list`). Otherwise `null`.
-4. Leave `disclaimer` as `null`. The bot always shows its own "unofficial" notice, and a disclaimer must never name the broadcaster.
+4. Leave `disclaimer` as `null`. The bot always shows its own "unofficial" notice, and a disclaimer must never name the broadcaster. Leave `minBotVersion` as `null` too, unless the pack relies on a field or a sync adapter that only newer Radio Bot releases have: then set it to the first release that has it (such as `1.5.0`), so older bots skip the pack instead of ignoring what they don't understand.
 
 ## 6. Fill in the intake sheet
 
