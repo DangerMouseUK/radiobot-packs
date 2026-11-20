@@ -37,7 +37,7 @@ Mediahuis Radio B.V. also runs 100%NL, Sunlite, Nostalgie and Radio Veronica. Th
 
 ## Live check (3 November 2026)
 
-Run with the maintainer's permission, one source at a time, with the bot's own `validate-catalogue --probe`. All 10 sources played. The redirect answered for every mount and led to a `live.streamtheworld.com` node, which differed from the node the browser player had used. Every stream was HE-AAC, 44.1 kHz stereo, measured at about 97 kbps (advertised 96). Each stream's ICY name matched its own station, for example "SLAM! Juize" for SLAM! JUIZE and "SLAM! FM Stream" for SLAM!.
+Run with permission, one source at a time, with the bot's own `validate-catalogue --probe`. All 10 sources played. The redirect answered for every mount and led to a `live.streamtheworld.com` node, which differed from the node the browser player had used. Every stream was HE-AAC, 44.1 kHz stereo, measured at about 97 kbps (advertised 96). Each stream's ICY name matched its own station, for example "SLAM! Juize" for SLAM! JUIZE and "SLAM! FM Stream" for SLAM!.
 
 ## What was not verified
 
